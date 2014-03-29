@@ -1,0 +1,5 @@
+User-agent: badbot
+Crawl-delay: 2
+
+User-agent: *
+Crawl-delay: 1

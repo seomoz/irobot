@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /request_params?
+Disallow: /matrix_params;
+Disallow: /private/*t=

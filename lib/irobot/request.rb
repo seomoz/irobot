@@ -3,7 +3,6 @@ require 'open-uri'
 require 'timeout'
 require 'uri'
 
-require 'irobot/faux_response'
 require 'irobot/logger'
 require 'irobot/response'
 
@@ -50,13 +49,13 @@ module Irobot
 
   private
 
-    def request_robots_txt!(use_cache)
+  def request_robots_txt!(use_cache)
       parsed_io = get_from_cache if use_cache
       return parsed_io if parsed_io
 
       start = Time.now
       io = robots_path.open('User-Agent' => user_agent)
-      logger.info "Request Time: #{Time.now - start}"
+      logger.info "HTTP Request Time: #{Time.now - start}"
       parsed_io = Irobot::Response.parse_io(io)
       set_cache(parsed_io, use_cache)
     end

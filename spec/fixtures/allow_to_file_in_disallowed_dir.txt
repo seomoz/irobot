@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /private/allow.html
+Allow: /private/crawlable/
+Disallow: /private/

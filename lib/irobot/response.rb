@@ -11,7 +11,7 @@ module Irobot
       io.string
     end
 
-    attr_writer :cached
+    # attr_writer :cached
     attr_accessor :request, :robots_txt
     def initialize(request, robots_txt = nil)
       @request = request
@@ -26,32 +26,18 @@ module Irobot
       parsed.other_values
     end
 
-    def cached?
-      @cached
-    end
-
-    def uri
-      @uri ||= URI.parse(request.uri)
-    end
-
     def request_uri
-      uri.request_uri
+      request.uri
     end
 
     def user_agent
       request.user_agent
     end
 
-    def each_line
-      robots_txt.split("\n").each do |line|
-        yield line
-      end
-    end
-
   private
 
     def parsed
-      @parsed ||= TxtParser.new(self)
+      @parsed ||= TxtParser.new(robots_txt, request_uri, user_agent)
     end
   end
 end

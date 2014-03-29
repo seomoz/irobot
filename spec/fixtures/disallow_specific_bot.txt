@@ -1,0 +1,4 @@
+User-agent: badbot
+Disallow: /
+Disallow: /private
+Disallow: /directory/private.html
