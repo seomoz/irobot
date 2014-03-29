@@ -1,0 +1,59 @@
+--- 
+http_interactions: 
+- request: 
+    method: get
+    uri: http://moz.com/robots.txt
+    body: 
+      encoding: US-ASCII
+      string: ""
+    headers: 
+      User-Agent: 
+      - dotbot
+      Accept: 
+      - "*/*"
+  response: 
+    status: 
+      code: 200
+      message: OK
+    headers: 
+      Server: 
+      - nginx
+      Content-Type: 
+      - text/plain
+      Vary: 
+      - Accept-Encoding
+      Cache-Control: 
+      - no-cache, must-revalidate, s-maxage=60
+      Expires: 
+      - Fri, 15 Oct 2004 12:00:00 GMT
+      Server-Name: 
+      - dalmozwww02.dal.moz.com
+      Transfer-Encoding: 
+      - chunked
+      Date: 
+      - Sat, 29 Mar 2014 08:26:29 GMT
+      X-Varnish: 
+      - 171967978 171967719
+      Age: 
+      - "8"
+      Via: 
+      - 1.1 varnish
+      Connection: 
+      - keep-alive
+    body: 
+      encoding: US-ASCII
+      string: |+
+        User-agent: *
+        Disallow: /api/user?*
+        Disallow: /pages/search_results*
+        Disallow:
+        
+        Sitemap: http://moz.com/blog-sitemap.xml
+        Sitemap: http://moz.com/ugc-sitemap.xml
+        Sitemap: http://moz.com/profiles-sitemap.xml
+        Sitemap: http://d2eeipcrcdle6.cloudfront.net/past-videos.xml
+        Sitemap: http://app.wistia.com/sitemaps/36357.xml
+        
+    http_version: 
+  recorded_at: Sat, 29 Mar 2014 08:26:29 GMT
+recorded_with: VCR 2.9.0

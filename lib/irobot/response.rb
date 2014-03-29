@@ -22,6 +22,8 @@ module Irobot
       parsed.allowed?
     end
 
+  private
+
     def other_values
       parsed.other_values
     end
@@ -33,8 +35,6 @@ module Irobot
     def user_agent
       request.user_agent
     end
-
-  private
 
     def parsed
       @parsed ||= TxtParser.new(robots_txt, request_uri, user_agent)
