@@ -25,7 +25,7 @@ module Irobot
       [cache_namespace, uri, user_agent].join('::')
     end
 
-    # If you need to bypass cache, use the bang version
+    # If you need to bypass memoization, use the bang version
     def response
       @response ||= request!(true)
     end
@@ -49,7 +49,7 @@ module Irobot
 
   private
 
-  def request_robots_txt!(use_cache)
+    def request_robots_txt!(use_cache)
       parsed_io = get_from_cache if use_cache
       return parsed_io if parsed_io
 
