@@ -13,9 +13,9 @@ module Irobot
 
     # attr_writer :cached
     attr_accessor :request, :robots_txt
-    def initialize(request, robots_txt = nil)
+    def initialize(request, robots_txt)
       @request = request
-      @robots_txt = robots_txt || self.class.parse_io(dummy_io)
+      @robots_txt = robots_txt
     end
 
     def allowed?

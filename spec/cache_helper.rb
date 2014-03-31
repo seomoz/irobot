@@ -14,7 +14,7 @@ class RequestCacheTest
     end
   end
 
-  def set(request, response)
+  def set(request, response, details = {})
     cache[request.to_key] = Marshal::dump(response)
   end
 end

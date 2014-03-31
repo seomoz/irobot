@@ -5,10 +5,12 @@ require 'uri'
 
 require 'irobot/logger'
 require 'irobot/response'
+require 'irobot/response/robots_allow'
 
 module Irobot
   class Request
     include Logger
+    include Response::RobotsAllow
 
     def self.allowed?(uri, user_agent)
       new(uri, user_agent).allowed?
@@ -39,7 +41,9 @@ module Irobot
 
       rescue Timeout::Error, RuntimeError => e
         logger.warn "Exception when requesting robots.txt: #{e}"
-        Irobot::Response.new(self)
+        parsed_accept = Irobot::Response.parse_io(dummy_io)
+        set_cache(parsed_accept, true, {exception: e})
+        Irobot::Response.new(self, parsed_accept)
       end
     end
 
@@ -60,11 +64,11 @@ module Irobot
       set_cache(parsed_io, use_cache)
     end
 
-    def set_cache(parsed_io, use_cache)
+    def set_cache(parsed_io, use_cache, details = {})
       if cacheable? && use_cache
         logger.info "Set Cache: #{to_key}"
         logger.debug "Cache: #{parsed_io}"
-        Irobot.config.cache.set(self, parsed_io)
+        Irobot.config.cache.set(self, parsed_io, details)
       end
       parsed_io
     end
