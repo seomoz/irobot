@@ -12,7 +12,7 @@ describe Irobot do
   context 'configuration' do
     it 'will provide defaults' do
       c = Irobot.config
-      expect(c.timeout).to be Irobot::DEFAULT_TIMEOUT
+      expect(c.timeout).to be Irobot::DEFAULT_TIMEOUT_IN_SECONDS
       expect(c.cache_namespace).to be Irobot::DEFAULT_CACHE_NAMESPACE
     end
   end
