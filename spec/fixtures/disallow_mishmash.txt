@@ -1,0 +1,5 @@
+User-agent: badbot
+Disallow: /good/
+
+User-agent: goodbot
+Disallow: /bad/
