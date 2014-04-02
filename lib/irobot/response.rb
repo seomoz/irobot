@@ -11,7 +11,6 @@ module Irobot
       io.string
     end
 
-    # attr_writer :cached
     attr_accessor :request, :robots_txt
     def initialize(request, robots_txt)
       @request = request
