@@ -93,7 +93,8 @@ module Irobot
       pattern = Regexp.escape(pattern)
 
       # Throw a wildcard at the end of the pattern if we are using parameters
-      pattern << '*' if pattern.include?('?')
+      # (and it does not already have a wildcard at the end)
+      pattern << '*' if pattern.match(/\?*[^\*]$/)
 
       pattern.gsub!(Regexp.escape("*"), ".*")
 
